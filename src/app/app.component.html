@@ -1,31 +1,73 @@
+<ngx-loading-bar [includeSpinner]="false" [height]="'5px'" [color]="'#0d6efd'"></ngx-loading-bar>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">News</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" routerLink="">News</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="tech">Tech News</a>
+        </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" routerLink="" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Country
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">India</a></li>
-            <li><a class="dropdown-item" href="#">UK</a></li>
-            <!-- <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+            <mat-form-field>
+              <mat-label>Country</mat-label>
+              <mat-select>
+                <mat-option value="in" [routerLink]="['/']" [queryParams]="{ country: 'in' }">India</mat-option>
+                <mat-option value="br" [routerLink]="['/']" [queryParams]="{ country: 'br' }">Brazil</mat-option>
+                <mat-option value="jp" [routerLink]="['/']" [queryParams]="{ country: 'jp' }">Japan</mat-option>
+                <mat-option value="nz" [routerLink]="['/']" [queryParams]="{ country: 'nz' }">New Zealand</mat-option>
+              </mat-select>
+            </mat-form-field>
           </ul>
         </li>
+     
+        <li class="nav-item">
+          <mat-form-field appearance="fill">
+            <mat-label>From Date</mat-label>
+            <input matInput [(ngModel)]="fromDate" [matDatepicker]="fromPicker" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+            <mat-datepicker #fromPicker></mat-datepicker>
+          </mat-form-field>
+        </li>
+
+        <!-- To Date Picker -->
+        <li class="nav-item">
+          <mat-form-field appearance="fill">
+            <mat-label>To Date</mat-label>
+            <input matInput [(ngModel)]="toDate" [matDatepicker]="toPicker" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+            <mat-datepicker #toPicker></mat-datepicker>
+          </mat-form-field>
+        </li>
+
+        <!-- Filter Button -->
+        <li class="nav-item">
+          <button mat-raised-button color="primary" (click)="filterByDateRange()">Filter by Date</button>
+        </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+     
+      <form class="flex" role="search" (submit)="onSearchSubmit($event)">
+        <mat-form-field>
+          <input matInput class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+            [(ngModel)]="searchQuery" name="searchQuery">
+        </mat-form-field>
+  data: any;
+        <button mat-raised-button color="primary" type="submit" [routerLink]="['/']" [queryParams]="data">Search</button>
       </form>
     </div>
   </div>
 </nav>
+
 <router-outlet></router-outlet>
+
 <footer>
   <p class="text-center" style="font-weight: bold;">&copy; & &reg; by TC NEWS 2024</p>
 </footer>
