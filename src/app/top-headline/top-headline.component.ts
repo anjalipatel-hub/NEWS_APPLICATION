@@ -1,6 +1,7 @@
 import { Component, OnInit, ɵɵdeferEnableTimerScheduling } from '@angular/core';
 import { NewsApiService } from '../Service/news-api.service';
 import { ActivatedRoute } from '@angular/router';
+import { Articles } from '../models/articles';
 
 @Component({
   selector: 'app-top-headline',
@@ -8,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './top-headline.component.css'
 })
 export class TopHeadlineComponent implements OnInit {
-  topHeadlineData: any = [];
+  topHeadlineData: Articles[] = [];;
   country: string = 'in';
   searchQuery: string = '';
   fromDate: string = '';

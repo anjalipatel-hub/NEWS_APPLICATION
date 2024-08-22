@@ -5,7 +5,6 @@
     <a class="navbar-brand" routerLink="" style="font-weight: bold; font-size: 20px;">News</a>
     <div class="d-flex align-items-center flex-wrap">
 
-      <!-- Country Dropdown -->
       <div class="nav-item me-3" style="height: 60px;">
         <mat-form-field appearance="outline" class="w-100" style="width: 120px;">
           <mat-label>Country</mat-label>
@@ -18,7 +17,6 @@
         </mat-form-field>
       </div>
 
-      <!-- From Date Picker -->
       <div class="nav-item me-3" style="height: 60px;">
         <mat-form-field appearance="outline" style="width: 140px; height: 100%;">
           <mat-label>From Date</mat-label>
@@ -28,7 +26,6 @@
         </mat-form-field>
       </div>
 
-      <!-- To Date Picker -->
       <div class="nav-item me-2" style="height: 60px;">
         <mat-form-field appearance="outline" style="width: 140px; height: 100%;">
           <mat-label>To Date</mat-label>
@@ -38,14 +35,12 @@
         </mat-form-field>
       </div>
 
-      <!-- Filter by Date Button -->
       <div class="nav-item me-2" style="height: 60px;">
         <button mat-stroked-button color="primary" [routerLink]="['/']" [queryParams]="{ from: fromDate | date:'yyyy-MM-dd', to: toDate | date:'yyyy-MM-dd' }" style="height: 100%;">
           Filter by Date
         </button>
       </div>
 
-      <!-- Search Form -->
       <div class="nav-item me-2" style="height: 60px;">
         <form class="d-flex align-items-center" role="search" style="height: 100%;">
           <mat-form-field appearance="outline" class="me-2" style="width: 180px; height: 100%;">
